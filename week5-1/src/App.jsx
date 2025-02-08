@@ -1,21 +1,22 @@
-import Home from "./Home"
-import Header from "./components/Header"
-import ProductDetail from "./ProductDetail"
-import { Routes, Route } from "react-router"
-import './App.css'
+import React from 'react'
+import { Routes, Route } from 'react-router'
+import Home from './Home'
+import ProductDetail from './ProductDetail'
+import Header from './components/Header'
+import Cart from './Cart'
+import { CartProvider } from './CartContext'
 
-function App() {
-  
-
+const App = () => {
   return (
     <>
-    <Header />
-    <Routes>
-    <Route index element={<Home />} />
-    <Route path="/ProductDetail/:id" element={<ProductDetail />} />
-    </Routes>
-      
-      
+      <CartProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
+        </Routes>
+      </CartProvider>
     </>
   )
 }
